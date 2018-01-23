@@ -32,5 +32,44 @@ class MarsRover {
     })
   }
 
+  //create move function according to move forward or move back
+  move(command) {
+    //intiate orginal increment value for x and y
+    let xIncrement = 0,
+        yIncrement = 0,
+        newLocation;
+    if(this.currentFacingDirection === 'N') {
+      yIncrement++
+    }else if(this.currentFacingDirection === 'S') {
+      yIncrement--
+    }else if(this.currentFacingDirection === 'E') {
+      xIncrement++
+    }else if(this.currentFacingDirection === 'W') {
+      xIncrement++
+    }
+
+    //modify the increment value based on command
+    if(command === 'f') {
+      xIncrement = xIncrement * 1;
+      yIncrement = yIncrement * 1
+    }
+    if(conmand === 'b') {
+      xIncrement = xIncrement * (-1);
+      yIncrement = yIncrement * (-1)
+    }
+
+    newLocation = [this.currentLocation[0] + xIncrement, this.currentLocation[1] + yIncrement];
+    //call backToEdge function to check edge to edge movement
+    this.backToEdge(newLocation, this.gridSize);
+    //print out new location after moving
+    console.log('newLocation', newLocation);
+  }
+  //create function to check if the Rover needs to be moved from edge to edge
+  backToEdge(newLocation, gridSize) {
+  newLocation[0] = newLocation[0] == gridSize[0] ? 0 : newLocation[0];
+  newLocation[1] = newLocation[1] == gridSize[1] ? 0 : newLocation[1]
+}
+
+
 
 }
