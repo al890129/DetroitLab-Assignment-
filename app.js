@@ -84,5 +84,34 @@ class MarsRover {
     return false
   }
 
-
+  //create function for turning left or right
+  turn(command) {
+    //initial an array include all directions
+    const allDirections = ['E', 'S', 'W', 'N'];
+    //declare a number for direction for future reference
+    let directionNum, newFacingDirection;
+    for(let i=0; i<allDirections.length;i++) {
+      if(allDirections[i] === this.currentFacingDirection) {
+        directionNum = i
+      }
+    }
+    if(command === 'r') {
+      if(this.currentFacingDirection === 'N') {
+        newFacingDirection = 'E'
+      }else {
+        newFacingDirection = allDirections[directionNum + 1]
+      }
+    }else if(command === 'l') {
+      if(this.currentFacingDirection === 'E') {
+        newFacingDirection = 'N'
+      }else {
+        newFacingDirection = allDirections[directionNum -1]
+      }
+    }
+    console.log('newFacingDirection, newFacingDirection')
+  }
 }
+
+//crate new Rover object along with four parameters based on our class
+let Rover = new MarsRover([50,50], [2,3], 'W', {ob1: [3,3], ob2:[4,5]})
+Rover.commands()
