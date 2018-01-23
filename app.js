@@ -53,7 +53,7 @@ class MarsRover {
       xIncrement = xIncrement * 1;
       yIncrement = yIncrement * 1
     }
-    if(conmand === 'b') {
+    if(command === 'b') {
       xIncrement = xIncrement * (-1);
       yIncrement = yIncrement * (-1)
     }
@@ -75,7 +75,7 @@ class MarsRover {
   //create a function to check if our next move gonna meet obstacles
   isObstacle(newLocation) {
     for(let key of Object.keys(this.obstacles)) {
-      if(this.obstacle[key].toString() == newLocation.toString()) {
+      if(this.obstacles[key].toString() == newLocation.toString()) {
         //back to previous location if detect obstacle
         newLocation = this.currentLocation;
         return true;
@@ -108,7 +108,7 @@ class MarsRover {
         newFacingDirection = allDirections[directionNum -1]
       }
     }
-    console.log('newFacingDirection, newFacingDirection')
+    console.log('newFacingDirection', newFacingDirection)
   }
 }
 
