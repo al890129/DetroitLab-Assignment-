@@ -15,4 +15,22 @@ class MarsRover {
       this.currentFacingDirection = currentFacingDirection;
       this.obstacles = obstacles;
   }
+
+  //create command function to receive diffrent kinds of commands based on the requirments
+  commands() {
+    //Here are four diffrent commands refer to four diffrent move
+    let commandsArray = ['f','b','l','r'];
+    //loop through each command to trigger the corresponding function
+    commandsArray.forEach((command) => {
+      if(command === 'f' || command === 'b') {
+        if(this.move(command)) {
+          return
+        };
+      }else if(command === 'l' || command === 'r') {
+        this.turn(command)
+      }
+    })
+  }
+
+
 }
