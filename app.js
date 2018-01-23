@@ -63,6 +63,8 @@ class MarsRover {
     this.backToEdge(newLocation, this.gridSize);
     //print out new location after moving
     console.log('newLocation', newLocation);
+    //print out boolean for obstacle
+    console.log('isObstacle', this.isObstacle(newLocation))
   }
   //create function to check if the Rover needs to be moved from edge to edge
   backToEdge(newLocation, gridSize) {
@@ -70,6 +72,17 @@ class MarsRover {
   newLocation[1] = newLocation[1] == gridSize[1] ? 0 : newLocation[1]
 }
 
+  //create a function to check if our next move gonna meet obstacles
+  isObstacle(newLocation) {
+    for(let key of Object.keys(this.obstacles)) {
+      if(this.obstacle[key].toString() == newLocation.toString()) {
+        //back to previous location if detect obstacle
+        newLocation = this.currentLocation;
+        return true;
+      }
+    }
+    return false
+  }
 
 
 }
